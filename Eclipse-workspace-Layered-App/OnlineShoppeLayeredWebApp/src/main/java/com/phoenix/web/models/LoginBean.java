@@ -47,8 +47,10 @@ public class LoginBean {
 		
 		dbUser = loginService.findByUserId(username);
 		
-		if (username != null && password != null && username.equals(dbUser.getUsername())
-				&& password.equals(dbUser.getPassword())) {
+		if (dbUser == null) {
+			return false;
+		} else if (username != null && password != null && username.equals(dbUser.getUsername())
+				&& password.equals(dbUser.getPassword())){
 			return true;
 		} else {
 			return false;
